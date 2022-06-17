@@ -145,6 +145,7 @@ void loop() {
     //    lcd.print(" PLEASE INSERT ");
     //    lcd.setCursor(0, 1);
     //    lcd.print("     COIN      ");
+    virtualLCD.clear();
   }
 
   if (total >= set2 && digitalRead(4) == LOW && stock2 >= 1) {
@@ -166,6 +167,8 @@ void loop() {
     //    lcd.print(" PLEASE INSERT ");
     //    lcd.setCursor(0, 1);
     //    lcd.print("     COIN      ");
+    virtualLCD.clear();
+
   }
   if (stock1 == 0 ) {
     Blynk.logEvent("noty", "SNACK 1 OUT OF STOCK");
