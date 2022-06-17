@@ -114,7 +114,7 @@ void loop() {
     lcd.print("   COIN : " + String(total) + "    ");
   }
 
-  if (digitalRead(5) == HIGH) {
+  if (digitalRead(5) == LOW) {
     if (total >= set1 &&  stock1 >= 1) {
       total = 0;
       stock1--;
@@ -154,7 +154,7 @@ void loop() {
   //    lcd.print("     COIN      ");
   //  }
 
-  if (digitalRead(4) == HIGH) {
+  if (digitalRead(4) == LOW) {
     if (total >= set1 &&  stock1 >= 1) {
       total = 0;
       stock2--;
