@@ -64,7 +64,7 @@ void loop() {
     count = 100;
     total = total + 0.10;
     lcd.setCursor(0, 0);
-    lcd.print("S1:" + String(set1) + " S2:" + String(set2) + " ");
+    lcd.print("S1: RM" + String(set1) + " S2: RM" + String(set2) + " ");
     lcd.setCursor(0, 1);
     lcd.print("   COIN : " + String(total) + "    ");
   }
@@ -73,7 +73,7 @@ void loop() {
     count = 100;
     total = total + 0.20;
     lcd.setCursor(0, 0);
-    lcd.print("S1:" + String(set1) + " S2:" + String(set2) + " ");
+    lcd.print("S1: RM" + String(set1) + " S2: RM" + String(set2) + " ");
     lcd.setCursor(0, 1);
     lcd.print("   COIN : " + String(total) + "    ");
   }
@@ -82,7 +82,7 @@ void loop() {
     count = 100;
     total = total + 0.50;
     lcd.setCursor(0, 0);
-    lcd.print("S1:" + String(set1) + " S2:" + String(set2) + " ");
+    lcd.print("S1: RM" + String(set1) + " S2: RM" + String(set2) + " ");
     lcd.setCursor(0, 1);
     lcd.print("   COIN : " + String(total) + "    ");
   }
@@ -91,7 +91,7 @@ void loop() {
     count = 100;
     total = total + 0.10;
     lcd.setCursor(0, 0);
-    lcd.print("S1:" + String(set1) + " S2:" + String(set2) + " ");
+    lcd.print("S1: RM" + String(set1) + " S2: RM" + String(set2) + " ");
     lcd.setCursor(0, 1);
     lcd.print("   COIN : " + String(total) + "    ");
   }
@@ -100,7 +100,7 @@ void loop() {
     count = 100;
     total = total + 0.20;
     lcd.setCursor(0, 0);
-    lcd.print("S1:" + String(set1) + " S2:" + String(set2) + " ");
+    lcd.print("S1: RM" + String(set1) + " S2: RM" + String(set2) + " ");
     lcd.setCursor(0, 1);
     lcd.print("   COIN : " + String(total) + "    ");
   }
@@ -109,7 +109,7 @@ void loop() {
     count = 100;
     total = total + 0.50;
     lcd.setCursor(0, 0);
-    lcd.print("S1:" + String(set1) + " S2:" + String(set2) + " ");
+    lcd.print("S1: RM" + String(set1) + " S2: RM" + String(set2) + " ");
     lcd.setCursor(0, 1);
     lcd.print("   COIN : " + String(total) + "    ");
   }
