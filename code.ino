@@ -114,65 +114,42 @@ void loop() {
     lcd.print("   COIN : " + String(total) + "    ");
   }
 
-  if (digitalRead(5) == LOW) {
-    if (total >= set1 &&  stock1 >= 1) {
-      total = 0;
-      stock1--;
-      virtualLCD.print(0, 0, "Stock1 : " + String(stock1) + "  ");
-      lcd.setCursor(0, 0);
-      lcd.print("    SNACK 1    ");
-      lcd.setCursor(0, 1);
-      lcd.print("   SELECTED    ");
-      delay(1000);
-      digitalWrite(MOTOR1, LOW);
-      delay(timedelay);
-      digitalWrite(MOTOR1, HIGH);
-      lcd.setCursor(0, 0);
-      lcd.print(" PLEASE INSERT ");
-      lcd.setCursor(0, 1);
-      lcd.print("     COIN      ");
-    }
+  if (total >= set1 && digitalRead(5) == LOW && stock1 >= 1) {
 
+    total = 0;
+    stock1--;
+    virtualLCD.print(0, 0, "Stock1 : " + String(stock1) + "  ");
+    lcd.setCursor(0, 0);
+    lcd.print("    SNACK 1    ");
+    lcd.setCursor(0, 1);
+    lcd.print("   SELECTED    ");
+    delay(1000);
+    digitalWrite(MOTOR1, LOW);
+    delay(timedelay);
+    digitalWrite(MOTOR1, HIGH);
+    lcd.setCursor(0, 0);
+    lcd.print(" PLEASE INSERT ");
+    lcd.setCursor(0, 1);
+    lcd.print("     COIN      ");
   }
-  //
-  //  if (total >= set2 && digitalRead(4) == HIGH && stock2 >= 1) {
-  //
-  //    total = 0;
-  //    stock2--;
-  //    virtualLCD.print(0, 1, "Stock2 : " + String(stock2) + "  ");
-  //    lcd.setCursor(0, 0);
-  //    lcd.print("    SNACK 2    ");
-  //    lcd.setCursor(0, 1);
-  //    lcd.print("   SELECTED    ");
-  //    delay(1000);
-  //    digitalWrite(MOTOR2, LOW);
-  //    delay(timedelay);
-  //    digitalWrite(MOTOR2, HIGH);
-  //    lcd.setCursor(0, 0);
-  //    lcd.print(" PLEASE INSERT ");
-  //    lcd.setCursor(0, 1);
-  //    lcd.print("     COIN      ");
-  //  }
+  
+  if (total >= set2 && digitalRead(4) == LOW && stock2 >= 1) {
 
-  if (digitalRead(4) == LOW) {
-    if (total >= set1 &&  stock1 >= 1) {
-      total = 0;
-      stock2--;
-      virtualLCD.print(0, 1, "Stock2 : " + String(stock2) + "  ");
-      lcd.setCursor(0, 0);
-      lcd.print("    SNACK 2    ");
-      lcd.setCursor(0, 1);
-      lcd.print("   SELECTED    ");
-      delay(1000);
-      digitalWrite(MOTOR2, LOW);
-      delay(timedelay);
-      digitalWrite(MOTOR2, HIGH);
-      lcd.setCursor(0, 0);
-      lcd.print(" PLEASE INSERT ");
-      lcd.setCursor(0, 1);
-      lcd.print("     COIN      ");
-    }
-
+    total = 0;
+    stock2--;
+    virtualLCD.print(0, 1, "Stock2 : " + String(stock2) + "  ");
+    lcd.setCursor(0, 0);
+    lcd.print("    SNACK 2    ");
+    lcd.setCursor(0, 1);
+    lcd.print("   SELECTED    ");
+    delay(1000);
+    digitalWrite(MOTOR2, LOW);
+    delay(timedelay);
+    digitalWrite(MOTOR2, HIGH);
+    lcd.setCursor(0, 0);
+    lcd.print(" PLEASE INSERT ");
+    lcd.setCursor(0, 1);
+    lcd.print("     COIN      ");
   }
   if (stock1 == 0 ) {
     Blynk.logEvent("noty", "SNACK 1 OUT OF STOCK");
