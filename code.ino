@@ -64,7 +64,7 @@ void loop() {
     count = 100;
     total = total + 0.10;
     lcd.setCursor(0, 0);
-    lcd.print("S1: RM" + String(set1) + " S2: RM" + String(set2) + " ");
+//    lcd.print("S1: RM" + String(set1) + " S2: RM" + String(set2) + " ");
     lcd.setCursor(0, 1);
     lcd.print("   COIN : " + String(total) + "    ");
   }
@@ -73,7 +73,7 @@ void loop() {
     count = 100;
     total = total + 0.20;
     lcd.setCursor(0, 0);
-    lcd.print("S1: RM" + String(set1) + " S2: RM" + String(set2) + " ");
+//    lcd.print("S1: RM" + String(set1) + " S2: RM" + String(set2) + " ");
     lcd.setCursor(0, 1);
     lcd.print("   COIN : " + String(total) + "    ");
   }
@@ -82,7 +82,7 @@ void loop() {
     count = 100;
     total = total + 0.50;
     lcd.setCursor(0, 0);
-    lcd.print("S1: RM" + String(set1) + " S2: RM" + String(set2) + " ");
+//    lcd.print("S1: RM" + String(set1) + " S2: RM" + String(set2) + " ");
     lcd.setCursor(0, 1);
     lcd.print("   COIN : " + String(total) + "    ");
   }
@@ -91,7 +91,7 @@ void loop() {
     count = 100;
     total = total + 0.10;
     lcd.setCursor(0, 0);
-    lcd.print("S1: RM" + String(set1) + " S2: RM" + String(set2) + " ");
+//    lcd.print("S1: RM" + String(set1) + " S2: RM" + String(set2) + " ");
     lcd.setCursor(0, 1);
     lcd.print("   COIN : " + String(total) + "    ");
   }
@@ -100,7 +100,7 @@ void loop() {
     count = 100;
     total = total + 0.20;
     lcd.setCursor(0, 0);
-    lcd.print("S1: RM" + String(set1) + " S2: RM" + String(set2) + " ");
+//    lcd.print("S1: RM" + String(set1) + " S2: RM" + String(set2) + " ");
     lcd.setCursor(0, 1);
     lcd.print("   COIN : " + String(total) + "    ");
   }
@@ -109,14 +109,14 @@ void loop() {
     count = 100;
     total = total + 0.50;
     lcd.setCursor(0, 0);
-    lcd.print("S1: RM" + String(set1) + " S2: RM" + String(set2) + " ");
+//    lcd.print("S1: RM" + String(set1) + " S2: RM" + String(set2) + " ");
     lcd.setCursor(0, 1);
     lcd.print("   COIN : " + String(total) + "    ");
   }
 
   if (total >= set1 && digitalRead(5) == LOW && stock1 >= 1) {
 
-    total = 0;
+    total = total - set1;
     stock1--;
     virtualLCD.print(0, 0, "Stock1 : " + String(stock1) + "  ");
     lcd.setCursor(0, 0);
@@ -135,7 +135,7 @@ void loop() {
   
   if (total >= set2 && digitalRead(4) == LOW && stock2 >= 1) {
 
-    total = 0;
+    total = total - set2;
     stock2--;
     virtualLCD.print(0, 1, "Stock2 : " + String(stock2) + "  ");
     lcd.setCursor(0, 0);
