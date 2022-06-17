@@ -149,7 +149,7 @@ void loop() {
   }
 
 
-    if (digitalRead(4) == LOW )
+  if (digitalRead(4) == LOW )
   {
     if (total >= set2 && stock2 >= 1)
     {
@@ -172,4 +172,22 @@ void loop() {
       virtualLCD.clear();
     }
   }
+  if (stock1 == 0 ) {
+    Blynk.logEvent("noty", "SNACK 1 OUT OF STOCK");
+    if (millis() - Timer > 43200) {
+      Timer = millis();
+    }
+  }
+  if (stock2 == 0 ) {
+    Blynk.logEvent("noty", "SNACK 2 OUT OF STOCK");
+    if (millis() - Timer > 43200) {
+      Timer = millis();
+    }
+  }
+}
+
+
+void billAcceptor() {
+  count++;
+  countreal = count - 100;
 }
