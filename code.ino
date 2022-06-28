@@ -34,8 +34,8 @@ void setup() {
   Serial.begin(9600);
   Blynk.begin(auth, ssid, pass);
   pinMode(interruptPin, INPUT_PULLUP);
-  pinMode(4, INPUT_PULLUP);
-  pinMode(5, INPUT_PULLUP);
+  pinMode(4, INPUT);
+  pinMode(5, INPUT);
   pinMode(MOTOR1, OUTPUT);
   pinMode(MOTOR2, OUTPUT);
   digitalWrite(MOTOR1, HIGH);
