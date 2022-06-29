@@ -142,6 +142,17 @@ void loop() {
       lcd.print("     COIN      ");
     }
   }
+  if (total >= set1 && digitalRead(5) == HIGH && stock1 == 0 )
+  { lcd.setCursor(0, 0);
+    lcd.print(" SNACK 1 ");
+    lcd.setCursor(0, 1);
+    lcd.print("  OUT OF STOCK"  );
+    delay(2000);
+    lcd.setCursor(0, 0);
+    lcd.print(" PLEASE INSERT ");
+    lcd.setCursor(0, 1);
+    lcd.print("     COIN      ");
+  }
 
   if (total >= set2 && digitalRead(4) == HIGH && stock2 >= 1) {
 
@@ -176,14 +187,27 @@ void loop() {
       lcd.print("     COIN      ");
     }
   }
-  if (stock1 == 0 ) {
-    Blynk.logEvent("noty", "SNACK 1 IS OUT OF STOCK");
 
+  if (total >= set2 && digitalRead(4) == HIGH && stock2 == 0 )
+  { lcd.setCursor(0, 0);
+    lcd.print(" SNACK 2 ");
+    lcd.setCursor(0, 1);
+    lcd.print("  OUT OF STOCK"  );
+    delay(2000);
+    lcd.setCursor(0, 0);
+    lcd.print(" PLEASE INSERT ");
+    lcd.setCursor(0, 1);
+    lcd.print("     COIN      ");
   }
-  if (stock2 == 0 ) {
-    Blynk.logEvent("noty", "SNACK 2 IS OUT OF STOCK");
+}
+if (stock1 == 0 ) {
+  Blynk.logEvent("noty", "SNACK 1 IS OUT OF STOCK");
 
-  }
+}
+if (stock2 == 0 ) {
+  Blynk.logEvent("noty", "SNACK 2 IS OUT OF STOCK");
+
+}
 }
 void billAcceptor() {
   count++;
@@ -208,4 +232,3 @@ BLYNK_WRITE(V3)
     stock2 = 10;
   }
 }
-
