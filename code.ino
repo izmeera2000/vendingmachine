@@ -30,7 +30,8 @@ int stock2 = 10;
 int noty1 = 0;
 int noty2 = 0;
 
-void setup() {
+void setup()
+{
   Serial.begin(9600);
   Blynk.begin(auth, ssid, pass);
   pinMode(interruptPin, INPUT_PULLUP);
@@ -51,165 +52,160 @@ void setup() {
   virtualLCD.print(0, 0, "Stock1 :" + String(stock1) + "   ");
   virtualLCD.print(0, 1, "Stock2 :" + String(stock2) + "   ");
 }
-void loop() {
+void loop()
+{
   Blynk.run();
   Serial.println(count);
-  //  if (millis() - Timer > 2000) {
-  //    countreal = count - 100;
-  //    Serial.println("COUNTREAL:" + String(countreal) + " ");
-  //    Timer = millis();
-  //  }
-  if (countreal == 1) {
+
+  if (countreal == 1)
+  {
     countreal = 0;
     count = 100;
     total = total + 0.10;
-    lcd.setCursor(0, 0);
-    lcd.print("S1:" + String(set1) + " S2:" + String(set2) + " ");
-    lcd.setCursor(0, 1);
-    lcd.print("   COIN : " + String(total) + "    ");
   }
-  if (countreal == 2) {
+  if (countreal == 2)
+  {
     countreal = 0;
     count = 100;
     total = total + 0.20;
-    lcd.setCursor(0, 0);
-    lcd.print("S1:" + String(set1) + " S2:" + String(set2) + " ");
-    lcd.setCursor(0, 1);
-    lcd.print("   COIN : " + String(total) + "    ");
   }
-  if (countreal == 3) {
+  if (countreal == 3)
+  {
     countreal = 0;
     count = 100;
     total = total + 0.50;
-    lcd.setCursor(0, 0);
-    lcd.print("S1:" + String(set1) + " S2:" + String(set2) + " ");
-    lcd.setCursor(0, 1);
-    lcd.print("   COIN : " + String(total) + "    ");
   }
-  if (countreal == 4) {
+  if (countreal == 4)
+  {
     countreal = 0;
     count = 100;
     total = total + 0.10;
-    lcd.setCursor(0, 0);
-    lcd.print("S1:" + String(set1) + " S2:" + String(set2) + " ");
-    lcd.setCursor(0, 1);
-    lcd.print("   COIN : " + String(total) + "    ");
   }
-  if (countreal == 5) {
+  if (countreal == 5)
+  {
     countreal = 0;
     count = 100;
     total = total + 0.20;
-    lcd.setCursor(0, 0);
-    lcd.print("S1:" + String(set1) + " S2:" + String(set2) + " ");
-    lcd.setCursor(0, 1);
-    lcd.print("   COIN : " + String(total) + "    ");
   }
-  if (countreal == 6) {
+  if (countreal == 6)
+  {
     countreal = 0;
     count = 100;
     total = total + 0.50;
+  }
+
+  if (digitalRead(5) == HIGH)
+  {
+    if (total >= set1)
+    {
+      if (stock1 >= 1)
+      {
+
+        total = total - set1;
+        stock1--;
+        virtualLCD.print(0, 0, "Stock1 : " + String(stock1) + "  ");
+        lcd.setCursor(0, 0);
+        lcd.print("    SNACK 1    ");
+        lcd.setCursor(0, 1);
+        lcd.print("   SELECTED    ");
+        delay(1000);
+        digitalWrite(MOTOR1, LOW);
+        delay(timedelay);
+        digitalWrite(MOTOR1, HIGH);
+      }
+      else
+      {
+        lcd.setCursor(0, 0);
+        lcd.print(" SNACK 1 ");
+        lcd.setCursor(0, 1);
+        lcd.print("  OUT OF STOCK");
+        delay(2000);
+        lcd.setCursor(0, 0);
+        lcd.print(" PLEASE INSERT ");
+        lcd.setCursor(0, 1);
+        lcd.print("     COIN      ");
+      }
+      if (total > 0)
+      {
+        lcd.setCursor(0, 0);
+        lcd.print("S1:" + String(set1) + " S2:" + String(set2) + " ");
+        lcd.setCursor(0, 1);
+        lcd.print("   COIN : " + String(total) + "    ");
+      }
+      else
+      {
+        lcd.setCursor(0, 0);
+        lcd.print(" PLEASE INSERT ");
+        lcd.setCursor(0, 1);
+        lcd.print("     COIN      ");
+      }
+    }
+  }
+  else if (digitalRead(4) == HIGH)
+  {
+    if (total >= set2)
+    {
+      if (stock2 >= 1)
+      {
+        total = total - set2;
+        stock2--;
+        virtualLCD.print(0, 1, "Stock2 : " + String(stock2) + "  ");
+        lcd.setCursor(0, 0);
+        lcd.print("    SNACK 2    ");
+        lcd.setCursor(0, 1);
+        lcd.print("   SELECTED    ");
+        delay(1000);
+        digitalWrite(MOTOR2, LOW);
+        delay(timedelay);
+        digitalWrite(MOTOR2, HIGH);
+      }
+      else
+      {
+        lcd.setCursor(0, 0);
+        lcd.print(" SNACK 2 ");
+        lcd.setCursor(0, 1);
+        lcd.print("  OUT OF STOCK");
+        delay(2000);
+        lcd.setCursor(0, 0);
+        lcd.print(" PLEASE INSERT ");
+        lcd.setCursor(0, 1);
+        lcd.print("     COIN      ");
+      }
+      if (total > 0)
+      {
+        lcd.setCursor(0, 0);
+        lcd.print("S1:" + String(set1) + " S2:" + String(set2) + " ");
+        lcd.setCursor(0, 1);
+        lcd.print("   COIN : " + String(total) + "    ");
+      }
+      else
+      {
+        lcd.setCursor(0, 0);
+        lcd.print(" PLEASE INSERT ");
+        lcd.setCursor(0, 1);
+        lcd.print("     COIN      ");
+      }
+    }
+  }
+  else
+  {
     lcd.setCursor(0, 0);
     lcd.print("S1:" + String(set1) + " S2:" + String(set2) + " ");
     lcd.setCursor(0, 1);
     lcd.print("   COIN : " + String(total) + "    ");
   }
-
-  if (total >= set1 && digitalRead(5) == HIGH && stock1 >= 1) {
-
-    total = total - set1;
-    stock1--;
-    virtualLCD.print(0, 0, "Stock1 : " + String(stock1) + "  ");
-    lcd.setCursor(0, 0);
-    lcd.print("    SNACK 1    ");
-    lcd.setCursor(0, 1);
-    lcd.print("   SELECTED    ");
-    delay(1000);
-    digitalWrite(MOTOR1, LOW);
-    delay(timedelay);
-    digitalWrite(MOTOR1, HIGH);
-
-    if (total > 0)
-    {
-      lcd.setCursor(0, 0);
-      lcd.print("S1:" + String(set1) + " S2:" + String(set2) + " ");
-      lcd.setCursor(0, 1);
-      lcd.print("   COIN : " + String(total) + "    ");
-    }
-    {
-      lcd.setCursor(0, 0);
-      lcd.print(" PLEASE INSERT ");
-      lcd.setCursor(0, 1);
-      lcd.print("     COIN      ");
-    }
+  if (stock1 == 0)
+  {
+    Blynk.logEvent("noty", "SNACK 1 IS OUT OF STOCK");
   }
-  if (total >= set1 && digitalRead(5) == HIGH && stock1 == 0 )
-  { lcd.setCursor(0, 0);
-    lcd.print(" SNACK 1 ");
-    lcd.setCursor(0, 1);
-    lcd.print("  OUT OF STOCK"  );
-    delay(2000);
-    lcd.setCursor(0, 0);
-    lcd.print(" PLEASE INSERT ");
-    lcd.setCursor(0, 1);
-    lcd.print("     COIN      ");
-  }
-
-  if (total >= set2 && digitalRead(4) == HIGH && stock2 >= 1) {
-
-    total = total - set2;
-    stock2--;
-    virtualLCD.print(0, 1, "Stock2 : " + String(stock2) + "  ");
-    lcd.setCursor(0, 0);
-    lcd.print("    SNACK 2    ");
-    lcd.setCursor(0, 1);
-    lcd.print("   SELECTED    ");
-    delay(1000);
-    digitalWrite(MOTOR2, LOW);
-    delay(timedelay);
-    digitalWrite(MOTOR2, HIGH);
-    lcd.setCursor(0, 0);
-    lcd.print(" PLEASE INSERT ");
-    lcd.setCursor(0, 1);
-    lcd.print("     COIN      ");
-
-
-    if (total > 0)
-    {
-      lcd.setCursor(0, 0);
-      lcd.print("S1:" + String(set1) + " S2:" + String(set2) + " ");
-      lcd.setCursor(0, 1);
-      lcd.print("   COIN : " + String(total) + "    ");
-    }
-    {
-      lcd.setCursor(0, 0);
-      lcd.print(" PLEASE INSERT ");
-      lcd.setCursor(0, 1);
-      lcd.print("     COIN      ");
-    }
-  }
-
-  if (total >= set2 && digitalRead(4) == HIGH && stock2 == 0 )
-  { lcd.setCursor(0, 0);
-    lcd.print(" SNACK 2 ");
-    lcd.setCursor(0, 1);
-    lcd.print("  OUT OF STOCK"  );
-    delay(2000);
-    lcd.setCursor(0, 0);
-    lcd.print(" PLEASE INSERT ");
-    lcd.setCursor(0, 1);
-    lcd.print("     COIN      ");
+  if (stock2 == 0)
+  {
+    Blynk.logEvent("noty", "SNACK 2 IS OUT OF STOCK");
   }
 }
-if (stock1 == 0 ) {
-  Blynk.logEvent("noty", "SNACK 1 IS OUT OF STOCK");
 
-}
-if (stock2 == 0 ) {
-  Blynk.logEvent("noty", "SNACK 2 IS OUT OF STOCK");
-
-}
-}
-void billAcceptor() {
+void billAcceptor()
+{
   count++;
   countreal = count - 100;
 }
@@ -217,17 +213,16 @@ void billAcceptor() {
 BLYNK_WRITE(V2)
 {
   int reset1 = param.asInt(); // Get value as integer
-  if (reset1)
+  if (reset1 == 1)
   {
     stock1 = 10;
   }
 }
 
-
 BLYNK_WRITE(V3)
 {
   int reset2 = param.asInt(); // Get value as integer
-  if (reset2)
+  if (reset2 ==1)
   {
     stock2 = 10;
   }
