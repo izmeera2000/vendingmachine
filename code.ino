@@ -125,20 +125,6 @@ void loop()
         lcd.setCursor(0, 1);
         lcd.print("     COIN      ");
       }
-      if (total > 0)
-      {
-        lcd.setCursor(0, 0);
-        lcd.print("S1:" + String(set1) + " S2:" + String(set2) + " ");
-        lcd.setCursor(0, 1);
-        lcd.print("   COIN : " + String(total) + "    ");
-      }
-      else
-      {
-        lcd.setCursor(0, 0);
-        lcd.print(" PLEASE INSERT ");
-        lcd.setCursor(0, 1);
-        lcd.print("     COIN      ");
-      }
     }
   }
   else if (digitalRead(4) == HIGH)
@@ -171,28 +157,24 @@ void loop()
         lcd.setCursor(0, 1);
         lcd.print("     COIN      ");
       }
-      if (total > 0)
-      {
-        lcd.setCursor(0, 0);
-        lcd.print("S1:" + String(set1) + " S2:" + String(set2) + " ");
-        lcd.setCursor(0, 1);
-        lcd.print("   COIN : " + String(total) + "    ");
-      }
-      else
-      {
-        lcd.setCursor(0, 0);
-        lcd.print(" PLEASE INSERT ");
-        lcd.setCursor(0, 1);
-        lcd.print("     COIN      ");
-      }
     }
   }
   else
   {
-    lcd.setCursor(0, 0);
-    lcd.print("S1:" + String(set1) + " S2:" + String(set2) + " ");
-    lcd.setCursor(0, 1);
-    lcd.print("   COIN : " + String(total) + "    ");
+    if (total > 0)
+    {
+      lcd.setCursor(0, 0);
+      lcd.print("S1:" + String(set1) + " S2:" + String(set2) + " ");
+      lcd.setCursor(0, 1);
+      lcd.print("   COIN : " + String(total) + "    ");
+    }
+    else
+    {
+      lcd.setCursor(0, 0);
+      lcd.print(" PLEASE INSERT ");
+      lcd.setCursor(0, 1);
+      lcd.print("     COIN      ");
+    }
   }
   if (stock1 == 0)
   {
@@ -222,7 +204,7 @@ BLYNK_WRITE(V2)
 BLYNK_WRITE(V3)
 {
   int reset2 = param.asInt(); // Get value as integer
-  if (reset2 ==1)
+  if (reset2 == 1)
   {
     stock2 = 10;
   }
