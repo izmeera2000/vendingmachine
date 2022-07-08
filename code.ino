@@ -127,7 +127,7 @@ void loop()
       }
     }
   }
-  else if (digitalRead(4) == HIGH)
+  if (digitalRead(4) == HIGH)
   {
     if (total >= set2)
     {
@@ -159,7 +159,7 @@ void loop()
       }
     }
   }
-  else
+  if (digitalRead(4) == LOW || digitalRead(5) == LOW)
   {
     if (total > 0)
     {
