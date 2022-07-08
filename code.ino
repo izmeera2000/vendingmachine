@@ -159,7 +159,7 @@ void loop()
       }
     }
   }
-  if (digitalRead(4) == LOW || digitalRead(5) == LOW)
+  if (digitalRead(4) == LOW && digitalRead(5) == LOW)
   {
     if (total > 0)
     {
