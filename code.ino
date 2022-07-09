@@ -55,43 +55,67 @@ void setup()
 void loop()
 {
   Blynk.run();
-  Serial.println(count);
+  // Serial.println(count);
 
   if (countreal == 1)
   {
     countreal = 0;
     count = 100;
     total = total + 0.10;
+    lcd.setCursor(0, 0);
+    lcd.print("S1:" + String(set1) + " S2:" + String(set2) + " ");
+    lcd.setCursor(0, 1);
+    lcd.print("   COIN : " + String(total) + "    ");
   }
   if (countreal == 2)
   {
     countreal = 0;
     count = 100;
     total = total + 0.20;
+    lcd.setCursor(0, 0);
+    lcd.print("S1:" + String(set1) + " S2:" + String(set2) + " ");
+    lcd.setCursor(0, 1);
+    lcd.print("   COIN : " + String(total) + "    ");
   }
   if (countreal == 3)
   {
     countreal = 0;
     count = 100;
     total = total + 0.50;
+    lcd.setCursor(0, 0);
+    lcd.print("S1:" + String(set1) + " S2:" + String(set2) + " ");
+    lcd.setCursor(0, 1);
+    lcd.print("   COIN : " + String(total) + "    ");
   }
   if (countreal == 4)
   {
     countreal = 0;
     count = 100;
     total = total + 0.10;
+    lcd.setCursor(0, 0);
+    lcd.print("S1:" + String(set1) + " S2:" + String(set2) + " ");
+    lcd.setCursor(0, 1);
+    lcd.print("   COIN : " + String(total) + "    ");
   }
   if (countreal == 5)
   {
     countreal = 0;
     count = 100;
     total = total + 0.20;
+    lcd.setCursor(0, 0);
+    lcd.print("S1:" + String(set1) + " S2:" + String(set2) + " ");
+    lcd.setCursor(0, 1);
+    lcd.print("   COIN : " + String(total) + "    ");
   }
   if (countreal == 6)
   {
     countreal = 0;
     count = 100;
     total = total + 0.50;
+    lcd.setCursor(0, 0);
+    lcd.print("S1:" + String(set1) + " S2:" + String(set2) + " ");
+    lcd.setCursor(0, 1);
+    lcd.print("   COIN : " + String(total) + "    ");
   }
 
   if (digitalRead(5) == HIGH)
@@ -120,6 +144,20 @@ void loop()
         lcd.setCursor(0, 1);
         lcd.print("  OUT OF STOCK");
         delay(2000);
+        lcd.setCursor(0, 0);
+        lcd.print(" PLEASE INSERT ");
+        lcd.setCursor(0, 1);
+        lcd.print("     COIN      ");
+      }
+      if (total > 0)
+      {
+        lcd.setCursor(0, 0);
+        lcd.print("S1:" + String(set1) + " S2:" + String(set2) + " ");
+        lcd.setCursor(0, 1);
+        lcd.print("   COIN : " + String(total) + "    ");
+      }
+      else
+      {
         lcd.setCursor(0, 0);
         lcd.print(" PLEASE INSERT ");
         lcd.setCursor(0, 1);
@@ -157,25 +195,23 @@ void loop()
         lcd.setCursor(0, 1);
         lcd.print("     COIN      ");
       }
+      if (total > 0)
+      {
+        lcd.setCursor(0, 0);
+        lcd.print("S1:" + String(set1) + " S2:" + String(set2) + " ");
+        lcd.setCursor(0, 1);
+        lcd.print("   COIN : " + String(total) + "    ");
+      }
+      else
+      {
+        lcd.setCursor(0, 0);
+        lcd.print(" PLEASE INSERT ");
+        lcd.setCursor(0, 1);
+        lcd.print("     COIN      ");
+      }
     }
   }
-  if (digitalRead(4) == LOW && digitalRead(5) == LOW)
-  {
-    if (total > 0)
-    {
-      lcd.setCursor(0, 0);
-      lcd.print("S1:" + String(set1) + " S2:" + String(set2) + " ");
-      lcd.setCursor(0, 1);
-      lcd.print("   COIN : " + String(total) + "    ");
-    }
-    else
-    {
-      lcd.setCursor(0, 0);
-      lcd.print(" PLEASE INSERT ");
-      lcd.setCursor(0, 1);
-      lcd.print("     COIN      ");
-    }
-  }
+
   if (stock1 == 0)
   {
     Blynk.logEvent("noty", "SNACK 1 IS OUT OF STOCK");
