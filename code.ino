@@ -232,7 +232,9 @@ BLYNK_WRITE(V2)
 {
   int reset1 = param.asInt(); // Get value as integer
   if (reset1 == 1)
-  {
+  {        
+    virtualLCD.print(0, 0, "Stock1 : " + String(stock1) + "  ");
+
     stock1 = 10;
   }
 }
@@ -243,5 +245,7 @@ BLYNK_WRITE(V3)
   if (reset2 == 1)
   {
     stock2 = 10;
+            virtualLCD.print(0, 1, "Stock2 : " + String(stock2) + "  ");
+
   }
 }
